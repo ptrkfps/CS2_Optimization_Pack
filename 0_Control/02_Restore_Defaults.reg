@@ -1,0 +1,52 @@
+Windows Registry Editor Version 5.00
+
+; ============================================================
+; CS2 OPTIMIZATION PACK - RESTORE DEFAULTS
+; ============================================================
+; Autor: ptrkfps - Engenheiro de Windows Internals / eSports
+; Compatibilidade: Windows 11 25H2
+; Objetivo: Reverter tweaks críticos e restaurar padrões
+; ============================================================
+
+; REMOVER CHAVES DO PACK
+[-HKEY_LOCAL_MACHINE\SOFTWARE\CS2_OptimizationPack]
+[-HKEY_CURRENT_USER\Software\CS2_OptimizationPack]
+
+; RESTAURAR REGISTRY KEYS CRÍTICAS
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management]
+"ClearPageFileAtShutdown"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\W32Time]
+"Start"=dword:00000003
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power]
+"HibernateEnabled"=dword:00000001
+"PlatformAoAcOverride"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]
+"PublishUserActivities"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\AdvertisingInfo]
+"Enabled"=dword:00000001
+
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
+"SystemPaneSuggestionsEnabled"=dword:00000001
+
+; REVERTER COPILOT
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\WindowsCopilot]
+"TurnOffWindowsCopilot"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsCopilot]
+"TurnOffWindowsCopilot"=dword:00000000
+
+; REVERTER RECALL
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsAI]
+"DisableRecall"=dword:00000000
+
+; ============================================================
+; NOTA DE SEGURANÇA:
+; ============================================================
+; Este arquivo restaura APENAS chaves de tweaks não críticas.
+; Windows Defender, Update e SmartScreen permanecem intactos.
+; Para restauração COMPLETA, use System Restore.
+; ============================================================

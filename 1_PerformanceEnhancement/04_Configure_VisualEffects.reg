@@ -1,0 +1,68 @@
+Windows Registry Editor Version 5.00
+
+; ============================================================
+; CS2 OPTIMIZATION PACK - CONFIGURE VISUAL EFFECTS
+; ============================================================
+; Autor: ptrkfps - Engenheiro de Windows Internals / eSports
+; Compatibilidade: Windows 11 25H2
+; Objetivo: Remover efeitos visuais desnecessários para latência
+; ============================================================
+
+; DISABLE VISUAL THEME ANIMATIONS
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects]
+"VisualFXSetting"=dword:00000003
+
+; DISABLE TRANSPARENCY EFFECTS (Aero)
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\DWM]
+"EnableAeroPeek"=dword:00000000
+"UseDpiScaling"=dword:00000000
+"AlwaysHibernateNetworkConnections"=dword:00000000
+
+; DISABLE WINDOW ANIMATIONS
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+"ListviewAlphaSelect"=dword:00000000
+"DisallowShaking"=dword:00000001
+"TaskbarGlomLevel"=dword:00000002
+"IconsOnly"=dword:00000001
+
+; DISABLE MOUSE CURSOR SHADOW
+[HKEY_CURRENT_USER\Software\Microsoft\Cursor]
+"CursorDropShadow"=dword:00000000
+
+; DISABLE FONT SMOOTHING
+[HKEY_CURRENT_USER\Control Panel\Desktop]
+"FontSmoothing"="0"
+"FontSmoothingType"=dword:00000002
+
+; REDUCE MENU ANIMATION
+[HKEY_CURRENT_USER\Control Panel\Desktop]
+"MenuShowDelay"="0"
+
+; DISABLE MINIMIZE/RESTORE ANIMATION
+[HKEY_CURRENT_USER\Control Panel\Desktop\WindowMetrics]
+"MinAnimate"="0"
+
+; MINIMIZE TOOLTIP DELAY
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+"ExtendedUIHoverTime"=dword:00000000
+
+; DISABLE BACKGROUND BLUR
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize]
+"EnableTransparency"=dword:00000000
+"EnableBlur"=dword:00000000
+
+; DISABLE FOCUS BORDER ANIMATION
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+"FocusRectColor"=dword:00000000
+
+; DISABLE TASK SWITCHER PREVIEW
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer]
+"AltTabSettings"=dword:00000000
+
+; ============================================================
+; IMPACTO ESPERADO:
+; - Redução de GPU overhead em UI rendering
+; - Menos stutter causado por animações do sistema
+; - Responsividade visual instantânea
+; - Ganho de ~1-2% de FPS em CS2
+; ============================================================

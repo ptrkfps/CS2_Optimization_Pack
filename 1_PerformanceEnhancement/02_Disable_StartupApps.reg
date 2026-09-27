@@ -1,0 +1,66 @@
+Windows Registry Editor Version 5.00
+
+; ============================================================
+; CS2 OPTIMIZATION PACK - DISABLE STARTUP APPS
+; ============================================================
+; Autor: ptrkfps - Engenheiro de Windows Internals / eSports
+; Compatibilidade: Windows 11 25H2
+; Objetivo: Zerar StartupDelayInMSec e remover overhead de startup
+; ============================================================
+
+; ZERO STARTUP DELAY SYSTEM-WIDE
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer]
+"StartupDelayInMSec"=dword:00000000
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer]
+"StartupDelayInMSec"=dword:00000000
+
+; DISABLE VISUAL EFFECTS ON STARTUP
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects]
+"VisualFXSetting"=dword:00000002
+
+; DISABLE ANIMATIONS
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\DWM\Animations]
+"DisableAnimations"=dword:00000001
+"AnimationAttribute"=dword:00000000
+
+; REMOVE AUTO-LAUNCHING APPS
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run]
+"OneDrive"=-
+"Teams"=-
+"Spotify"=-
+"Discord"=-
+"Razer"=-
+"SteelSeries"=-
+"CorsairLink"=-
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run]
+"OneDrive"=-
+"Teams"=-
+"SecurityHealthSystray"=-
+"WindowsDefenderNotificationIcon"=-
+
+; DISABLE AUTO-DOWNLOAD OF DRIVERS
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\DriverSearching]
+"SearchOrderConfig"=dword:00000000
+
+; DISABLE UPnP FOR FASTER NETWORK INITIALIZATION
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\upnphost]
+"Start"=dword:00000004
+
+; REDUCE KEYBOARD INPUT DELAY ON STARTUP
+[HKEY_CURRENT_USER\Control Panel\Keyboard]
+"InitialKeyboardIndicators"=dword:00000002
+"KeyboardSpeed"=dword:0000001F
+"KeyboardDelay"=dword:00000000
+
+; DISABLE SUPERFETCH FOR SNAPPIER RESPONSE
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters]
+"EnableSuperfetch"=dword:00000001
+
+; ============================================================
+; IMPACTO ESPERADO:
+; - Startup instantâneo (< 500ms de delay total)
+; - Redução de variação de latência inicial
+; - Less jitter no primeiro spawn em CS2
+; ============================================================

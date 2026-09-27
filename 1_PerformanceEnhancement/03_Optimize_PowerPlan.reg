@@ -1,0 +1,75 @@
+Windows Registry Editor Version 5.00
+
+; ============================================================
+; CS2 OPTIMIZATION PACK - OPTIMIZE POWER PLAN
+; ============================================================
+; Autor: ptrkfps - Engenheiro de Windows Internals / eSports
+; Compatibilidade: Windows 11 25H2 / Intel i5-14400F
+; Objetivo: Desativar CsEnabled, otimizar para latência baixa
+; ============================================================
+
+; DISABLE C-STATE TRANSITIONS (CsEnabled = 0)
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power\PowerSettings\54533251-82be-498d-aa53-c1075bb273e0\0cc5b647-c1df-4637-891f-2dab12b20f33]
+"ACSettingIndex"=dword:00000000
+"DCSettingIndex"=dword:00000000
+
+; DISABLE PROCESSOR IDLE STATE
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power\PowerSettings\54533251-82be-498d-aa53-c1075bb273e0\5d76a2ca-e8c0-402f-a133-2ee6263edf37]
+"ACSettingIndex"=dword:00000000
+"DCSettingIndex"=dword:00000000
+
+; SET PROCESSOR PERFORMANCE STATE TO MAXIMUM
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power\PowerSettings\54533251-82be-498d-aa53-c1075bb273e0\bb194f50-c7f7-4add-b3b9-c5824e92ce1f]
+"ACSettingIndex"=dword:00000064
+"DCSettingIndex"=dword:00000064
+
+; DISABLE USB SELECTIVE SUSPEND
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power\PowerSettings\2c5e7fce-a7be-4e60-9cee-5612f96e6c96\48e6b7a6-50f5-4782-a5d4-53bb8f07e226]
+"ACSettingIndex"=dword:00000000
+"DCSettingIndex"=dword:00000000
+
+; MAXIMIZE PROCESSOR FREQUENCY
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power\PowerSettings\54533251-82be-498d-aa53-c1075bb273e0\bc5038f7-23e0-4960-96da-220b21f1928b]
+"ACSettingIndex"=dword:00000064
+"DCSettingIndex"=dword:00000064
+
+; DISABLE HIBERNATE
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power]
+"HibernateEnabled"=dword:00000000
+"PlatformAoAcOverride"=dword:00000000
+
+; DISABLE FAST STARTUP (causes latency spikes)
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control]
+"HiberbootEnabled"=dword:00000000
+
+; DISABLE POWER THROTTLING
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power\PowerSettings\54533251-82be-498d-aa53-c1075bb273e0\12a0ab44-fe28-4fa9-b3bd-4b64f44960a6]
+"ACSettingIndex"=dword:00000000
+"DCSettingIndex"=dword:00000000
+
+; DISABLE DISPLAY SLEEP
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power\PowerSettings\7516b95f-f776-4464-8c53-06167f40cc99\3c0bc021-c8a8-4e07-a973-6b14cbcb2b7e]
+"ACSettingIndex"=dword:00000000
+"DCSettingIndex"=dword:00000000
+
+; DISABLE HARD DISK SPIN DOWN
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power\PowerSettings\0012ee47-9041-4b5d-9b77-53d186d50f7d\6738e5c4-e8a5-4a42-b16a-e040e769756e]
+"ACSettingIndex"=dword:00000000
+"DCSettingIndex"=dword:00000000
+
+; SET PCIE LINK STATE CONTROL TO OFF
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power\PowerSettings\19cfe465-3f6c-4bc2-844b-2b6b63a3f87d\ee12368b-36ea-4440-9b20-3328522c3154]
+"ACSettingIndex"=dword:00000000
+"DCSettingIndex"=dword:00000000
+
+; DISABLE WIFI POWER SAVING (manter ativo)
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NativeWifiDriver\Parameters\Config]
+"PowerSavingMode"=dword:00000000
+
+; ============================================================
+; IMPACTO ESPERADO:
+; - Frequência CPU estável em 4.5+ GHz constantes
+; - Redução de frame pacing variance
+; - Eliminação de latência de power state transitions
+; - Garantir responsividade máxima no i5-14400F
+; ============================================================

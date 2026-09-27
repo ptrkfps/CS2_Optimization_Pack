@@ -1,0 +1,52 @@
+Windows Registry Editor Version 5.00
+
+; ============================================================
+; CS2 OPTIMIZATION PACK - DISABLE ACTIVITY HISTORY
+; ============================================================
+; Autor: ptrkfps - Engenheiro de Windows Internals / eSports
+; Compatibilidade: Windows 11 25H2
+; Objetivo: Desativar rastreamento de atividade e timeline
+; ============================================================
+
+; DISABLE ACTIVITY HISTORY IN SETTINGS
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]
+"PublishUserActivities"=dword:00000000
+"UploadUserActivities"=dword:00000000
+"EnableActivityFeed"=dword:00000000
+
+; DISABLE TASK SCHEDULER TRACKING
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options]
+"ActivityHistoryEnabled"=dword:00000000
+
+; DISABLE ACTIVITY CACHE
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\ActivityHistory]
+"Start"=dword:00000004
+
+; DISABLE CLIPBOARD HISTORY
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Clipboard]
+"CloudClipboardAutomaticUpload"=dword:00000000
+"EnableClipboardHistory"=dword:00000000
+
+; DISABLE TIMELINE
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\SettingSync\Groups\Telemetry]
+"Enabled"=dword:00000000
+
+; DISABLE USAGE DATA COLLECTION FOR APPS
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Privacy]
+"AppSuggestionOptInLevel"=dword:00000000
+
+; DISABLE GAME ACTIVITY TRACKING
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Gaming\GameDVR]
+"AppCaptureEnabled"=dword:00000000
+"HistoricalCaptureEnabled"=dword:00000000
+
+; REDUCE STORAGE OF LOCAL ACTIVITY DATA
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Activity]
+"StorageFolder"=""
+
+; ============================================================
+; IMPACTO ESPERADO:
+; - Redução de leituras/escritas em disco de atividade
+; - Menor consumo de memória para cache de timeline
+; - Eliminação de pequenos hiatos de I/O durante gameplay
+; ============================================================

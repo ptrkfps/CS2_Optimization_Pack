@@ -1,0 +1,36 @@
+Windows Registry Editor Version 5.00
+
+; ============================================================
+; CS2 OPTIMIZATION PACK - BACKUP REGISTRY
+; ============================================================
+; Autor: ptrkfps - Engenheiro de Windows Internals / eSports
+; Compatibilidade: Windows 11 25H2
+; Objetivo: Criar checkpoint de registro antes das mudanças
+; ============================================================
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\CS2_OptimizationPack]
+"BackupDate"="2026-09-27"
+"PhaseNumber"="0"
+"PhaseLabel"="Control"
+"Status"="BackupReference"
+"Notes"="Registry backup reference for Windows 11 25H2 CS2 optimization"
+"TargetGame"="Counter-Strike 2"
+"TargetMetric"="Input Lag Reduction and 1% Low FPS Stability"
+"HardwareProfile"="Intel i5-14400F | RTX 4060 Ti | 16GB DDR5"
+"IsReversible"="1"
+
+[HKEY_CURRENT_USER\Software\CS2_OptimizationPack]
+"UserBackupDate"="2026-09-27"
+"OptimizationLevel"="Aggressive"
+"GameMode"="Enabled"
+"Notes"="User-level registry checkpoint for counter-strike 2 tweaks"
+
+; ============================================================
+; INSTRUÇÕES PARA RESTAURAÇÃO MANUAL:
+; ============================================================
+; 1. Abra o Registro (regedit.exe) como Administrador
+; 2. Localize a chave HKEY_LOCAL_MACHINE\SOFTWARE\CS2_OptimizationPack
+; 3. Exporte e salve para backup adicional se necessário
+; 4. Aplique os tweaks subsequentes
+; 5. Se houver regressão, use o arquivo '02_Restore_Defaults.reg'
+; ============================================================

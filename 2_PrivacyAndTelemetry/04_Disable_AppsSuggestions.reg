@@ -1,0 +1,56 @@
+Windows Registry Editor Version 5.00
+
+; ============================================================
+; CS2 OPTIMIZATION PACK - DISABLE APPS SUGGESTIONS
+; ============================================================
+; Autor: ptrkfps - Engenheiro de Windows Internals / eSports
+; Compatibilidade: Windows 11 25H2
+; Objetivo: Desativar recomendações de aplicativos no Menu Iniciar
+; ============================================================
+
+; DISABLE CONTENT DELIVERY MANAGER SUGGESTIONS
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
+"SystemPaneSuggestionsEnabled"=dword:00000000
+"SoftLandingEnabled"=dword:00000000
+"RotatingLockScreenEnabled"=dword:00000000
+"RotatingLockScreenOverlayEnabled"=dword:00000000
+"PreInstalledAppsEnabled"=dword:00000000
+"SilentInstall"=dword:00000000
+"ContentDeliveryEnabled"=dword:00000000
+
+; DISABLE SPECIFIC SUGGESTION CATEGORIES
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
+"SubscribedContent-338393Enabled"=dword:00000000
+"SubscribedContent-338388Enabled"=dword:00000000
+"SubscribedContent-338389Enabled"=dword:00000000
+"SubscribedContent-338394Enabled"=dword:00000000
+"SubscribedContent-310093Enabled"=dword:00000000
+"SubscribedContent-314559Enabled"=dword:00000000
+"SubscribedContent-314563Enabled"=dword:00000000
+"SubscribedContent-338387Enabled"=dword:00000000
+
+; DISABLE APP RECOMMENDATIONS IN START MENU
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+"Start_TrackProgs"=dword:00000000
+"Start_IrisRecommendations"=dword:00000000
+
+; DISABLE PERSONALIZED ADS
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Privacy]
+"AppSuggestionOptInLevel"=dword:00000000
+
+; DISABLE GAME PASS SUGGESTIONS
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
+"SubscribedContent-338376Enabled"=dword:00000000
+"SubscribedContent-338375Enabled"=dword:00000000
+
+; DISABLE WINDOWS TIPS NOTIFICATIONS
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
+"SubscribedContent-310093Enabled"=dword:00000000
+
+; ============================================================
+; IMPACTO ESPERADO:
+; - Eliminação de popups de sugestões durante gameplay
+; - Menos overhead de carregamento do Menu Iniciar
+; - Redução de network requests para recomendar apps
+; - Limpeza visual sem distrações
+; ============================================================
